@@ -1,0 +1,42 @@
+<h1 id="tableLabel">Weather forecast</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!forecasts?.length"><em>Loading...</em></p>
+
+<table mat-table [dataSource]="forecasts" class="mat-elevation-z8">
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef>Date</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.date | date : "yy-dd-mm" }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="temperatureC">
+    <th mat-header-cell *matHeaderCellDef>Temp. (C)</th>
+    <td mat-cell *matCellDef="let element">{{ element.temperatureC }}</td>
+  </ng-container>
+  <ng-container matColumnDef="temperatureF">
+    <th mat-header-cell *matHeaderCellDef>Temp. (F)</th>
+    <td mat-cell *matCellDef="let element">{{ element.temperatureF }}</td>
+  </ng-container>
+  <ng-container matColumnDef="summary">
+    <th mat-header-cell *matHeaderCellDef>Summary</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.summary | uppercase }}
+    </td >
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="DeleteItem(item.name)">Delete</button>
+        <button mat-menu-item>Edit</button>
+      </mat-menu>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

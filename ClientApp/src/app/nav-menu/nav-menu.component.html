@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+  <span>Angular API</span>
+  <span class="example-spacer"></span>
+  <button
+    mat-button
+    aria-label="Example icon-button with share icon"
+    [routerLink]="['/counter']"
+  >
+    Counter
+  </button>
+  <button
+    mat-button
+    aria-label="Example icon-button with share icon"
+    [routerLink]="['/fetch-data']"
+  >
+    Fetch data
+  </button>
+  <button
+    mat-icon-button
+    aria-label="Example icon-button with heart icon"
+    [routerLink]="['/']"
+  >
+    <mat-icon>home</mat-icon>
+  </button>
+</mat-toolbar>
